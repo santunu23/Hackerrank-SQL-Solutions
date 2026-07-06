@@ -1,10 +1,13 @@
 SELECT 
-A.hacker_id, A.name
-FROM hackers A 
-JOIN Submissions B  ON A.hacker_id=B.hacker_id
-JOIN Challenges C   ON C.challenge_id=B.challenge_id
-JOIN Difficulty D   ON D.difficulty_level=C.difficulty_level
-WHERE B.score=D.score
-GROUP BY A.hacker_id,A.name
-HAVING COUNT(B.challenge_id) > 1
-ORDER BY COUNT(B.challenge_id) Desc,A.hacker_id ASC;
+H.Hacker_id,H.name
+from hackers H
+JOIN submissions S 
+on h.hacker_id=S.hacker_id
+JOIN Challenges C
+ON S.challenge_id=C.challenge_id
+JOIN Difficulty D
+ON C.difficulty_level=D.difficulty_level
+where S.score = D.score 
+GROUP BY H.hacker_id, H.name
+HAVING COUNT(S.challenge_id) > 1
+ORDER BY COUNT(S.challenge_id) DESC, H.hacker_id ASC;
