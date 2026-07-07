@@ -1,0 +1,6 @@
+FROM
+WHERE
+GROUP BY
+HAVING
+SELECT (window function এখানে)
+ORDER BY
